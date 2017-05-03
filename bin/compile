@@ -4,6 +4,7 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 METEOR_HOME=$BUILD_DIR/.meteor/local
 PATH=$METEOR_HOME/usr/bin:$METEOR_HOME/usr/lib/meteor/bin:$PATH
+NODE_VERSION='4.8.1'
 
 indent() {
   c='s/^/       /'
@@ -18,7 +19,7 @@ status() {
 }
 
 # node_version=$(curl --silent --get https://semver.io/node/resolve/0.10.x)
-node_version='4.8.1'
+node_version=$NODE_VERSION
 
 install_node() {
   if [ -f "$BUILD_DIR/.vendor/node/bin/node" ] ; then
