@@ -54,20 +54,20 @@ install_yarn() {
   status "Downloading and installing yarn $yarn_version"
   YARN_INSTALLER="yarn-v$yarn_version.tar.gz"
   YARN_URL="https://yarnpkg.com/downloads/$yarn_version/$YARN_INSTALLER"
-  local code=$(curl "$YARN_URL" -L --silent --fail --retry 5 --retry-max-time 15 -o /tmp/$YARN_INSTALLER --write-out "%{http_code}")
+  local code=$(curl "$YARN_URL" -L --silent --fail --retry 5 --retry-max-time 15 -o /tmp/yarn.tar.gz --write-out "%{http_code}")
   if [ "$code" != "200" ]; then
     echo "Unable to download yarn: $code" && false
   fi
 
   if tar --version | grep -q 'gnu'; then
-    tar xzf /tmp/$YARN_INSTALLER -C "$BUILD_DIR/$YARN_INSTALLER" --strip 1 --warning=no-unknown-keyword
+    tar xzf /tmp/yarn.tar.gz -C "$BUILD_DIR/yarn" --strip 1 --warning=no-unknown-keyword
   else
-    tar xzf /tmp/$YARN_INSTALLER -C "$BUILD_DIR/$YARN_INSTALLER" --strip 1
+    tar xzf /tmp/yarn.tar.gz -C "$BUILD_DIR/yarn" --strip 1
   fi
 
   # Move yarn into ./.vendor and make them executable
   mkdir -p $BUILD_DIR/.vendor
-  mv $BUILD_DIR/$YARN_INSTALLER $BUILD_DIR/.vendor/yarn
+  mv $BUILD_DIR/yarn $BUILD_DIR/.vendor/yarn
   chmod +x $BUILD_DIR/.vendor/yarn/bin/*
   PATH=$BUILD_DIR/.vendor/yarn/bin:$PATH
 
