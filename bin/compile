@@ -42,6 +42,8 @@ install_node() {
   PATH=$BUILD_DIR/.vendor/node/bin:$PATH
 }
 
+yarn_version=$YARN_VERSION
+
 install_yarn() {
   if [ -f "$BUILD_DIR/.vendor/yarn/bin/yarn" ] ; then
     status "Skipping Yarn installation. Already installed."
