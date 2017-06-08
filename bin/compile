@@ -59,6 +59,8 @@ install_yarn() {
     echo "Unable to download yarn: $code" && false
   fi
 
+  mkdir -p $BUILD_DIR/yarn
+
   if tar --version | grep -q 'gnu'; then
     tar xzf /tmp/yarn.tar.gz -C "$BUILD_DIR/yarn" --strip 1 --warning=no-unknown-keyword
   else
