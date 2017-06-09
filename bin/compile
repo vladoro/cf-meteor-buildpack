@@ -107,6 +107,10 @@ install_meteor() {
 build() {
   (
     cd $BUILD_DIR
+
+    npm install -g node-gyp
+    npm install -g fibers
+
     # status "Building meteor bundle"
     # meteor build --directory deploy --server http://localhost:3000
     cd deploy/bundle/programs/server
