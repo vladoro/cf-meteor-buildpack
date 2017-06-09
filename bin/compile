@@ -7,8 +7,6 @@ PATH=$METEOR_HOME/usr/bin:$METEOR_HOME/usr/lib/meteor/bin:$PATH
 NODE_VERSION='4.8.1'
 YARN_VERSION='0.24.5'
 
-NODE_TLS_REJECT_UNAUTHORIZED="0"
-
 indent() {
   c='s/^/       /'
   case $(uname) in
