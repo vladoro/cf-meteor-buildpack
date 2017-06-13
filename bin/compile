@@ -125,7 +125,7 @@ build() {
 
 install_node
 install_yarn
-# install_meteor
+install_meteor
 build
 
 status "Checking for post_compile script"
